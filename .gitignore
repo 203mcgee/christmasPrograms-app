@@ -1,0 +1,3 @@
+node-modules/
+*-lock.json
+config/
