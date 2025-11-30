@@ -10,6 +10,8 @@ router.get('/',(req,res)=>{
     })
 })
 
+
+
 router.get('/api',(req,res)=>{
     // res.send('Hello!')
     res.json({
@@ -31,7 +33,10 @@ endpoints.forEach(endpoint =>{
 
 router.use((req,res,next)=>{
     res.status(404)
-    .send('404 PAGE NOT FOUND!')
+    .render('pages/error',{
+        title:"ERROR",
+        name:"ERROR"
+    })
 })
 
 
