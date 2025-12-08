@@ -1,0 +1,35 @@
+<%- include('../partials/header') %>
+<main class="main" id="main">
+    <link rel="stylesheet" type="css" href="../../public/css/style.css">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <% if (prev != null) {%>
+                    <a href="?page=<%= prev %>">prev</a>
+                    
+                <% } %>
+                <% if (next != null) { %>   
+                     <a href="?page=<%= next %>">next</a>
+               <% } %> 
+                
+            </div>
+    </div>
+    <section class="section" id="section">
+        <div class="row row-cols-1 row-cols-md-3 gd-4">
+         <% data.forEach(actor => { %>
+             <div class="col" id="div">
+                 <div class="card h-100">
+                     <div class="card-body">
+                         <h2 class="card-title">
+                             <%= actor.fName %> <%= actor.lName %>
+                         </h2>
+                     </div>
+                 </div>
+             </div>
+     
+         <% }) %>
+        </div>
+    </section>
+    
+</main>
+<%- include('../partials/footer') %>

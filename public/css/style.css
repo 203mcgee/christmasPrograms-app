@@ -1,0 +1,47 @@
+*{ box-sizing: border-box;}
+
+body{
+    margin:0;
+    padding:0;
+    background-color: blanchedalmond;
+}
+.header{
+    padding: 5px 0;
+    background: #d01107;
+    /* background: linear-gradient(90deg, rgba(173, 36, 12, 0.68) 39%, rgba(73, 153, 108, 1) 64%, rgba(237, 221, 83, 1) 100%); */
+}
+/* https://www.w3schools.com/howto/tryit.asp?font=Mountains%20of%20Christmas */
+h1{
+    font-family: 'Mountains of Christmas';font-size: 22px;
+    color: black;
+}
+
+a{  
+  font-family: 'Mountains of Christmas';font-size: 22px;
+  color: #028e61;
+}
+
+.top-nav{
+    color:blanchedalmond;
+    font-weight: 600;
+}
+
+.top-nav2{
+    color: rgb(0, 0, 0);
+    font-family: "Times New Roman", serif;
+}
+
+.top-h2{
+    color:#0b966a;
+
+
+}
+
+.program-name{
+    text-transform: uppercase;
+}
+
+
+
+/* 26532B */
+

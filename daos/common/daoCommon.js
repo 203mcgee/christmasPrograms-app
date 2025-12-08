@@ -74,17 +74,102 @@ const daoCommon = {
 
         const query = req.query ? req.query : {}
 
-        let x = req.query.x || null
-        let y = req.query.y || null
+        let fName = req.query.fName || null
+        let lName = req.query.lName || null
+        
 
-        if (x == null && y == null) {
+        //Producer,Director,Actor table
+        if (fName == null && lName == null) {
             sql = `SELECT * FROM ${table};`
-        } else if (y == null) {
-            sql = `SELECT * FROM ${table} WHERE first_name LIKE '%${x}%';`
-        } else if (x == null) {
-            sql = `SELECT * FROM ${table} WHERE last_name LIKE '%${y}%';`
-        } else {
-            sql = `SELECT * FROM ${table} WHERE first_name LIKE '%${x}%' AND last_name LIKE '%${y}%';`
+        } else if (lName == null) {
+            sql = `SELECT * FROM ${table} WHERE fName LIKE '%${fName}%';`
+        } else if (fName == null) {
+            sql = `SELECT * FROM ${table} WHERE lName LIKE '%${lName}%';`
+        }else {
+            sql = `SELECT * FROM ${table} WHERE fName LIKE '%${fName}%' AND lName LIKE '%${lName}%';`
+        }
+
+        // /search?fName=burl&lName=ives
+
+        connect.execute(
+            sql, 
+            (error, rows)=> {
+                if (rows.length == 0) {
+                    res.send('<h1>No data to send</h1>')
+                } else {
+
+                    if(!error)
+                    {
+                       if(rows.length == 1)
+                        {
+                            res.json(...rows)
+                        } 
+                        else{
+                            res.json(rows)
+                        }
+                    }
+                    else
+                    {
+                        console.log(`${table}DAO Error: ${error}`)
+                        res.json({
+                            "message":'error',
+                            'table':`${table}`,
+                            'error': error
+                        })
+                    }
+                }
+            }
+        )
+    },
+    searchProgram:(req,res,table)=>{
+        let sql = ''
+        const query = req.query ? req.query : {}
+
+        let title = req.query.title || null
+
+        if(title != null){
+            sql = `SELECT * FROM ${table} WHERE title LIKE '%${title}';`
+        }
+
+        connect.execute(
+            sql, 
+            (error, rows)=> {
+                if (rows.length == 0) {
+                    res.send('<h1>No data to send</h1>')
+                } else {
+
+                    if(!error)
+                    {
+                       if(rows.length == 1)
+                        {
+                            res.json(...rows)
+                        } 
+                        else{
+                            res.json(rows)
+                        }
+                    }
+                    else
+                    {
+                        console.log(`${table}DAO Error: ${error}`)
+                        res.json({
+                            "message":'error',
+                            'table':`${table}`,
+                            'error': error
+                        })
+                    }
+                }
+            }
+        )
+
+    },
+    searchStreaming: (req,res,table)=>{
+        let sql = ''
+        const query = req.query ? req.query : {}
+
+        let streaming_platform = req.query.streaming_platform || null
+
+        if (streaming_platform != ''){
+            sql = `SELECT * FROM ${table} WHERE streaming_platform LIKE '%${streaming_platform}';`
         }
 
         connect.execute(
@@ -153,7 +238,7 @@ const daoCommon = {
         else
         {
             const fields = Object.keys(req.body)
-            const values = Object.keys(req.body)
+            const values = Object.values(req.body)
 
             connect.execute(
                 `INSERT INTO ${table} SET ${fields.join(' = ?, ')} = ?;`,
@@ -193,7 +278,7 @@ const daoCommon = {
         else
         {
             const fields = Object.keys(req.body)
-            const values = Object.keys(req.body)
+            const values = Object.values(req.body)
 
             connect.execute(
                 `UPDATE ${table}
@@ -224,29 +309,3 @@ const daoCommon = {
 }
 
 module.exports = daoCommon
-
-
-//   search: (res,table,id1,id2,term)=>{
-//         connect.execute(
-//             `SELECT ${id1}, ${id2} FROM ${table} WHERE ${id1} LIKE '%${term}%'; `,
-//             (error,rows)=>{
-//                 if(!error)
-//                 {
-//                     res.json(rows)
-//                    res.json({
-
-//                    })
-//                 }
-//                 else
-//                 {
-//                     console.log(`DAO Error: ${error}`)
-//                     res.json({
-//                         "message": 'error',
-//                         'table': `${table}`,
-//                         'error': error
-//                     })
-//                 }
-//             }
-//         )
-
-//     },
