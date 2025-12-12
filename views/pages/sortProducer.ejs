@@ -1,0 +1,19 @@
+<%- include('../partials/header') %>
+<main class="main" id="main">
+    <section class="section" id="section">
+        <!-- <div class="row row-cols-1 row-cols-md-3 gd-4"> -->
+            <% data.forEach(data => { %>
+             <div class="col" id="div">
+                 <div class="card h-100">
+                     <div class="card-body">
+                         <h2 class="card-title producer-name">
+                             <%= data.fName %> <%= data.lName %>
+                         </h2>
+                     </div>
+                 </div>
+             </div>
+        </div>
+        <% }) %>
+    </section>
+</main>
+<%- include('../partials/footer') %>

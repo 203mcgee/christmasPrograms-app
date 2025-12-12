@@ -1,6 +1,5 @@
 <%- include('../partials/header') %>
 <main class="main" id="main">
-    <link rel="stylesheet" type="css" href="../../public/css/style.css">
     <div class="container">
         <div class="row">
             <div class="col">
@@ -15,13 +14,13 @@
             </div>
     </div>
     <section class="section" id="section">
-        <div class="row row-cols-1 row-cols-md-3 gd-4 actor-name">
-         <% data.forEach(actor => { %>
+        <div class="row row-cols-1 row-cols-md-3 gd-4 streaming-name">
+         <% data.forEach(streaming => { %>
              <div class="col" id="div">
                  <div class="card h-100">
                      <div class="card-body">
                          <h2 class="card-title">
-                             <%= actor.fName %> <%= actor.lName %>
+                             <%= streaming.streaming_platform %>
                          </h2>
                      </div>
                  </div>
@@ -32,8 +31,7 @@
     </section>
     <div class="container">
         <div class="col">
-            <li><a href="/sortingActors/fName">Sort by First Name</a></li>
-            <li><a href="/sortingActors/lName">Sort by Last Name</a></li>
+            <li><a href="/sortingServices/streaming_platform">Sort by Streaming Platform</a></li>
         </div>
     </div>
     

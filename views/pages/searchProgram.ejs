@@ -1,0 +1,24 @@
+<%- include('../partials/header') %>
+<main class="main" id="main">
+    <form 
+        action="http://localhost:3000/api/program/search"
+        method="get" 
+        class="get" 
+        id="searchProgram"
+        >
+        <div class="row mb-3">
+            <div class="col">
+                <label for="title" class="form-label">
+                    title
+                </label>
+                <input type="text"
+                id="title"
+                name="title"
+                class="form-control "/>
+            </div>
+            <button
+        class="btn btn-primary" type="search" role="button"> Search Program </button>
+    </form>
+    </div>
+</main>
+<%- include('../partials/footer') %>

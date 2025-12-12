@@ -5,20 +5,17 @@ const connect = require('../../config/dbconfig')
 const producerDao = {
     table:'producer',
     movieProducer: (res,table,id)=>{
-        let sql = ` select p.title,pr.fName,pr.lName from program p join ${table} pr using (${table}_id) where ${table}_id = ${id};`
+        let sql = ` select p.title,pr.fName,pr.lName from program p join ${table} pr using (${table}_id) where p.program_id = ${id};`
         connect.execute(
             sql,
             (error,rows)=>{
+                console.log(rows)
                 if(!error)
                 {
-                    if(rows.length == 1)
+                    if(rows.length)
                     {
-                        res.json(...rows)
+                        res.json(rows) 
                     } 
-                    else
-                    {
-                        res.json(rows)
-                    }
                 }
                 else
                 {

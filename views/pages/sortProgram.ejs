@@ -1,0 +1,39 @@
+<%- include('../partials/header') %>
+<main class="main" id="main">
+    <section class="section" id="section">
+        <div class="row row-cols-1 row-cols-md-3 gd-4 sort-data">
+         <% data.forEach(program => { %>
+             <div class="col" id="div">
+                 <div class="card h-100">
+                     <div class="card-body">
+                         <h2 class="card-title program-name">
+                             <a href="/singleProgram/<%= program.program_id %>">
+                                 <%= program.title %>
+                             </a> 
+                         </h2>
+                         <img src="/images/<%= program.img %>" alt="image of <%= program.title %>">
+                         <ul class="turn-green">
+                             <li>Description: <%= program.program_description %></li>
+                             <li>Runtime: <%= program.runtime %></li>
+                             <li>Format: <%= program.format %></li>
+                             <li>General Rating: <%= program.rating %></li>
+                             <li>Year Released: <%= program.yr_released %></li>
+                             <li>Program Rating: <%= program.program_rating %></li>
+                             
+
+
+
+                             <a class="nav-link top-nav2" href="/moreInfo/<%= program.program_id %>">More Information</a>
+                         </ul>
+                     </div>
+                 </div>
+             </div>
+     
+         <% }) %>
+        </div>
+    </section>
+
+
+    
+</main>
+<%- include('../partials/footer') %>

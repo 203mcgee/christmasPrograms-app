@@ -1,0 +1,35 @@
+<%- include('../partials/header') %>
+<main class="main" id="main">
+    <div class="container">
+        <div class="row row-cols-1 row-cols-md-3 gd-4">
+            <div class="col" id="div">
+               <div class="card h-100">
+                    <div class="card-body">
+                        <h1 class="green">
+                            Here is some more information on the Program
+                        </h1> 
+                            <ul class="text-center">
+                                <li>
+                                    <a class="nav-link top-nav2" href="/actorsInPrograms/<%= data.program_id %>">Actors</a>
+                                </li>
+                                <li>
+                                    <a class="nav-link top-nav2" href="/directorsInPrograms/<%= data.program_id %>">Directors</a>
+                                </li>
+                                <li>
+                                    <a class="nav-link top-nav2" href="/producersInPrograms/<%= data.program_id %>">Producers</a>
+                                </li>
+                                <li>
+                                    <a class="nav-link top-nav2" href="/servicesInPrograms/<%= data.program_id %>">Streaming Services</a> 
+                                </li>
+                                <li>
+                                    <a class="top-nav2" href="/programs">Go Back?</a:c>
+                                </li>
+                            </ul> 
+
+                    </div>
+               </div> 
+            </div>
+        </div>
+    </div>
+</main>
+<%- include('../partials/footer') %>

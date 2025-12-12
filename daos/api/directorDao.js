@@ -33,11 +33,7 @@ const directorDao = {
 
                 if(!error)
                 {
-                    if(rows.length == 1)
-                    {
-                        res.json(...rows)
-                    } 
-                    else
+                    if(rows.length)
                     {
                         res.json(rows)
                     }

@@ -8,7 +8,6 @@ body{
 .header{
     padding: 5px 0;
     background: #d01107;
-    /* background: linear-gradient(90deg, rgba(173, 36, 12, 0.68) 39%, rgba(73, 153, 108, 1) 64%, rgba(237, 221, 83, 1) 100%); */
 }
 /* https://www.w3schools.com/howto/tryit.asp?font=Mountains%20of%20Christmas */
 h1{
@@ -27,18 +26,69 @@ a{
 }
 
 .top-nav2{
-    color: rgb(0, 0, 0);
+    color: red;
     font-family: "Times New Roman", serif;
 }
 
 .top-h2{
     color:#0b966a;
 
-
 }
 
 .program-name{
-    text-transform: uppercase;
+    text-transform: capitalize;
+}
+
+.actor-name{
+    text-transform: capitalize;
+    color:black;
+}
+
+.director-name{
+    text-transform: capitalize;
+    color: black;
+}
+
+.producer-name{
+    text-transform: capitalize;
+    color: black;
+}
+
+.streaming-name{
+    text-transform: capitalize;
+    color:black;
+}
+
+
+ul {
+    display: inline-block;
+    
+}
+
+.main-nav{
+    text-align: center;
+}
+
+.green{
+    color:green;
+}
+
+.sort-data{
+    max-width: max-content;
+}
+
+.sortProgram{
+    text-align: right;
+
+    color:#d01107;
+}
+
+.dropDown{
+    padding-right: 30px;
+}
+
+.grinch-gif{
+    padding-right: 20%;
 }
 
 

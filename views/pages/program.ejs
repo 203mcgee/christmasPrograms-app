@@ -1,19 +1,18 @@
 <%- include('../partials/header') %>
 <main class="main" id="main">
-    <!-- <link rel="stylesheet" type="css" href="../../public/css/style.css"> -->
     <div class="container">
         <div class="row">
             <div class="col">
                 <% if (prev != null) {%>
-                    <a href="?page=<%= prev %>">prev</a>
+                    <a href="?page=<%= prev %>">&lt;prev</a>
                     
-                <% } %>
-                <% if (next != null) { %>   
-                     <a href="?page=<%= next %>">next</a>
-               <% } %> 
-                
-            </div>
-    </div>
+                    <% } %>
+                    <% if (next != null) { %>   
+                        <a href="?page=<%= next %>">next&gt;</a>
+                        <% } %> 
+                        
+                    </div>
+                </div>
     <section class="section" id="section">
         <div class="row row-cols-1 row-cols-md-3 gd-4">
          <% data.forEach(program => { %>
@@ -21,17 +20,23 @@
                  <div class="card h-100">
                      <div class="card-body">
                          <h2 class="card-title program-name">
-                             <%= program.title %>
+                             <a href="/singleProgram/<%= program.program_id %>">
+                                 <%= program.title %>
+                             </a> 
                          </h2>
                          <img src="/images/<%= program.img %>" alt="image of <%= program.title %>">
-                         <ul>
+                         <ul class="turn-green">
                              <li>Description: <%= program.program_description %></li>
                              <li>Runtime: <%= program.runtime %></li>
                              <li>Format: <%= program.format %></li>
                              <li>General Rating: <%= program.rating %></li>
                              <li>Year Released: <%= program.yr_released %></li>
                              <li>Program Rating: <%= program.program_rating %></li>
-                             <a class="nav-link top-nav2" href="/actorsInPrograms/<%= program.program_id %>">Actors</a>
+                             
+
+
+
+                             <a class="nav-link top-nav2" href="/moreInfo/<%= program.program_id %>">More Information</a>
                          </ul>
                      </div>
                  </div>
@@ -40,6 +45,34 @@
          <% }) %>
         </div>
     </section>
+    <div class="container">
+        <div class="col">
+            <li> 
+                <a href="/sortingPrograms/title">Sort by Title</a>
+            </li>
+            <li>
+                <a href="/sortingPrograms/format">Sort by Format</a>
+            </li>
+            <li>
+                <a href="/sortingPrograms/runtime">Sort by Runtime</a>
+            </li>
+            <li>
+                <a href="/sortingPrograms/yr_released">Sort by Year Released</a>
+            </li>
+            <li>
+                <a href="/sortingPrograms/rating">Sort by Rating</a>
+            </li>
+            <li>
+                <a href="/sortingPrograms/program_rating">Sort by Program Rating</a>
+            </li>
+        </div>
+    </div>
+
     
 </main>
 <%- include('../partials/footer') %>
+
+<!-- <a class="nav-link top-nav2" href="/actorsInPrograms/ program.program_id ">Actors</a>
+                             <a class="nav-link top-nav2" href="/directorsInPrograms/ program.program_id ">Directors</a>
+                             <a class="nav-link top-nav2" href="/producersInPrograms/ program.program_id %>">Producers</a>
+                             <a class="nav-link top-nav2" href="/servicesInPrograms/ program.program_id %>">Services</a>  -->

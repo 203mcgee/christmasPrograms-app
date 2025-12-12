@@ -7,16 +7,17 @@ const streamingDao = {
         connect.execute(
             sql,
             (error,rows)=>{
-               
+               console.log(rows)
                 if(!error)
                 {
-                  if(rows.length == 1)
+                  if(rows.length)
                     {
-                        res.json(...rows)
-                    } 
-                    else
-                    {
-                        res.json(rows)
+                        res.json(rows)  
+                    }
+                    else{
+                        res.json({
+                            "message":"Not Available on any Streaming Devices"
+                        })
                     }
                 }
                 else
@@ -41,7 +42,7 @@ const streamingDao = {
                
                 if(!error)
                 {
-                  if(rows.length == 1)
+                  if(rows.length)
                     {
                         res.json(...rows)
                     } 

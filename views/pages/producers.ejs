@@ -15,13 +15,13 @@
             </div>
     </div>
     <section class="section" id="section">
-        <div class="row row-cols-1 row-cols-md-3 gd-4 actor-name">
-         <% data.forEach(actor => { %>
+        <div class="row row-cols-1 row-cols-md-3 gd-4 producer-name">
+         <% data.forEach(producer => { %>
              <div class="col" id="div">
                  <div class="card h-100">
                      <div class="card-body">
                          <h2 class="card-title">
-                             <%= actor.fName %> <%= actor.lName %>
+                             <%= producer.fName %> <%= producer.lName %>
                          </h2>
                      </div>
                  </div>
@@ -32,8 +32,8 @@
     </section>
     <div class="container">
         <div class="col">
-            <li><a href="/sortingActors/fName">Sort by First Name</a></li>
-            <li><a href="/sortingActors/lName">Sort by Last Name</a></li>
+            <li><a href="/sortingProducers/fName">Sort by First Name</a></li>
+            <li><a href="/sortingProducers/lName">Sort by Last Name</a></li>
         </div>
     </div>
     
