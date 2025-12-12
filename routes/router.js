@@ -34,6 +34,7 @@ router.get('/api',(req,res)=>{
     })
 })
 
+//----------------- BE ABLE TO GET THE ROUTES AND SAVING SPACE -------------------
 const endpoints = ['program','actor','producer','director','streaming']
 
 endpoints.forEach(endpoint =>{
@@ -153,7 +154,7 @@ router.get('/streaming_services',(req,res)=>{
         })
 })
 
-
+//--- GETTING MORE INFORMATION FOR A SINGULAR MOVIE ---------------
 router.get('/moreInfo/:id',(req,res)=>{
     let id = req.params.id
     const url = `http://localhost:3000/api/program/get_program/${id}`
@@ -264,32 +265,71 @@ router.get('/moreStuff',(req,res)=>{
     })
 })
 
+//---------- SEARCHING ------------------
 
-
-router.get('/searchPrograms',(req,res)=>{
-    const url = 'http://localhost:3000/api/program/search'
-
-    axios.get(url)
-        .then(resp=>{
-            res.render('pages/searchProgram',{
-                title: "Search for Christmas Program",
-                name: "Search",
-                data: resp.data
-            })
-        })
+router.get('/search',(req,res)=>{
+    res.render('pages/search',{
+        title:'Search',
+        name:'Search'
+    })
 })
 
+router.get('/searchPrograms',(req,res)=>{
+    
+    res.render('pages/searchProgram',{
+        title: "Search for Christmas Program",
+        name: "Search"           
+    })
+       
+})
+
+router.get('/searchStreaming',(req,res)=>{
+    res.render('pages/searchStreaming',{
+        title:"Search for a Streaming Services",
+        name:"Search for a Streaming Services"
+    })
+})
+
+router.get('/searchActor',(req,res)=>{
+    res.render('pages/searchActor',{
+        title:'Search for Actor',
+        name:'Search for Actor'
+    })
+})
+
+router.get('/searchDirector',(req,res)=>{
+    res.render('pages/searchDirector',{
+        title:'Search for Director',
+        name:'Search for Director'
+    })
+})
+
+router.get('/searchProducer',(req,res)=>{
+    res.render('pages/searchProducer',{
+        title:'Search for Producer',
+        name:'Search for Producer'
+    })
+})
+
+//----------- SORTING THINGS -----------------------
 router.get('/sortingPrograms/:sorter',(req,res)=>{
     const sorter = req.params.sorter
     const url = `http://localhost:3000/api/program/sort/${sorter}`
 
+    const pageData = paginationResults(req)
+
+    let programData = []
+
 
     axios.get(url)
         .then(resp =>{
+            const programArrData = buildProgramArr(resp.data,programData,pageData.startIdx,pageData.endIdx,pageData.page)
             res.render('pages/sortProgram',{
                 title: "Sorting items",
                 name:"Sorting",
-                data: resp.data
+                data: programArrData.arr,
+                prev:programArrData.prev,
+                next:programArrData.next
             })
         })
 })
@@ -297,14 +337,20 @@ router.get('/sortingPrograms/:sorter',(req,res)=>{
 router.get('/sortingActors/:sorter',(req,res)=>{
     const sorter = req.params.sorter
     const url = `http://localhost:3000/api/actor/sort/${sorter}`
+    
+    const pageData = paginationResults(req)
 
+    let programData = []
 
     axios.get(url)
         .then(resp =>{
+            const programArrData = buildProgramArr(resp.data,programData,pageData.startIdx,pageData.endIdx,pageData.page)
             res.render('pages/sortActor',{
                 title: "Sorting items",
                 name:"Sorting",
-                data: resp.data
+                data:programArrData.arr,
+                prev:programArrData.prev,
+                next:programArrData.next
             })
         })
 })
@@ -313,13 +359,20 @@ router.get('/sortingProducers/:sorter',(req,res)=>{
     const sorter = req.params.sorter
     const url = `http://localhost:3000/api/producer/sort/${sorter}`
 
+    const pageData = paginationResults(req)
+
+    let programData = []
+
 
     axios.get(url)
         .then(resp =>{
+            const programArrData = buildProgramArr(resp.data,programData,pageData.startIdx,pageData.endIdx,pageData.page)
             res.render('pages/sortProducer',{
                 title: "Sorting items",
                 name:"Sorting",
-                data: resp.data
+                data: programArrData.arr,
+                prev:programArrData.prev,
+                next:programArrData.next
             })
         })
 })
@@ -328,13 +381,20 @@ router.get('/sortingDirectors/:sorter',(req,res)=>{
     const sorter = req.params.sorter
     const url = `http://localhost:3000/api/director/sort/${sorter}`
 
+    const pageData = paginationResults(req)
+
+    let programData = []
+
 
     axios.get(url)
         .then(resp =>{
+            const programArrData = buildProgramArr(resp.data,programData,pageData.startIdx,pageData.endIdx,pageData.page)
             res.render('pages/sortDirector',{
                 title: "Sorting items",
                 name:"Sorting",
-                data: resp.data
+                data: programArrData.arr,
+                prev:programArrData.prev,
+                next:programArrData.next
             })
         })
 })
@@ -343,13 +403,20 @@ router.get('/sortingServices/:sorter',(req,res)=>{
     const sorter = req.params.sorter
     const url = `http://localhost:3000/api/streaming/sort/${sorter}`
 
+    const pageData = paginationResults(req)
+
+    let programData = []
+
 
     axios.get(url)
         .then(resp =>{
+            const programArrData = buildProgramArr(resp.data,programData,pageData.startIdx,pageData.endIdx,pageData.page)
             res.render('pages/sortStreaming',{
                 title: "Sorting items",
                 name:"Sorting",
-                data: resp.data
+                data: programArrData.arr,
+                prev:programArrData.prev,
+                next:programArrData.next
             })
         })
 })

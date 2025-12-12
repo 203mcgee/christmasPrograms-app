@@ -1,5 +1,18 @@
 <%- include('../partials/header') %>
 <main class="main" id="main">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <% if (prev != null) {%>
+                    <a href="?page=<%= prev %>">&lt;prev</a>
+                    
+                    <% } %>
+                    <% if (next != null) { %>   
+                        <a href="?page=<%= next %>">next&gt;</a>
+                        <% } %> 
+                        
+                    </div>
+                </div>
     <section class="section" id="section">
         <div class="row row-cols-1 row-cols-md-3 gd-4 sort-data">
          <% data.forEach(program => { %>

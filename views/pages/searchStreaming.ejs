@@ -1,0 +1,24 @@
+<%- include('../partials/header') %>
+<main class="main" id="main">
+    <form 
+        action="http://localhost:3000/api/streaming/search"
+        method="get" 
+        class="get" 
+        id="searchPlatform"
+        >
+        <div class="row mb-3">
+            <div class="col">
+                <label for="streaming_platform" class="form-label">
+                    Streaming Platform
+                </label>
+                <input type="streaming_platform"
+                id="streaming_platform"
+                name="streaming_platform"
+                class="form-control "/>
+            </div>
+            <button
+        class="btn btn-primary" type="search" role="button"> Search for Streaming Platform </button>
+    </form>
+    </div>
+</main>
+<%- include('../partials/footer') %>

@@ -1,0 +1,32 @@
+<%- include('../partials/header') %>
+<main class="main" id="main">
+    <div class="container">
+        <h2 class="text-center text-capitalize top-h2">
+            Search for Director
+        </h2>
+        <form action="http://localhost:3000/api/director/search" method="get" class="get" id="searchDirector">
+            <div class="row mb-3">
+                <div class="col">
+                    <label for="fName" class="form-label">
+                        First Name
+                    </label>
+                    <input type="text" 
+                    id="fName"
+                    name="fName"
+                    class="form-control"/>
+                </div>
+            </div>
+            <div class="col">
+                <label for="lName" class="form-label">
+                        Last Name
+                    </label>
+                    <input type="text" 
+                    id="lName"
+                    name="lName"
+                    class="form-control"/>
+                    <button class="btn btn-primary"  type="submit" role="button"> Search for Director</button>
+            </div>
+        </form>
+    </div>
+</main>
+<%- include('../partials/footer') %>
